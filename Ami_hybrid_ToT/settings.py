@@ -52,6 +52,9 @@ INTERNAL_IPS = [
 ]
 
 
+NPM_BIN_PATH = r"C:\Program Files\nodejs\npm.cmd"
+
+
 
 MIDDLEWARE = [
     'django_browser_reload.middleware.BrowserReloadMiddleware',
@@ -149,4 +152,4 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-NPM_BIN_PATH = r"C:\Program Files\nodejs\npm.cmd"
+NPM_BIN_PATH = "/usr/bin/npm"  # Default path for npm on Render
