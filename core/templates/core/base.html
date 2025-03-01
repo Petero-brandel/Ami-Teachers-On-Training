@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html>
+    {% load static tailwind_tags %}
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>Ami</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        {% tailwind_css %}
+    </head>
+    <body class="bg-gray-100">
+
+        <nav class="bg-slate-50 p-4 shadow-lg border-b">
+            <div class="container mx-auto flex justify-between items-center">
+
+                <!-- Logo -->
+                <div class="text-xl font-bold">Ami Educationa</div>
+
+                <!-- Mobile Menu Toggle Button -->
+                <div class="block lg:hidden">
+                    <button id="menu-toggle" class="text-gray-500 focus:outline-none">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
+                        </svg>
+                    </button>
+                </div>
+
+                <!-- Desktop Menu -->
+                <div class="hidden lg:flex lg:items-center lg:w-auto w-full" id="desktop-menu">
+                    <ul class="lg:flex lg:justify-between text-base text-gray-700">
+                        <li><a class="lg:p-4 py-3 px-0 block border-b-2 border-transparent hover:border-indigo-400" href="{% url 'home' %}">Home</a></li>
+                        <li><a class="lg:p-4 py-3 px-0 block border-b-2 border-transparent hover:border-indigo-400" href="#">About</a></li>
+                        <li><a class="lg:p-4 py-3 px-0 block border-b-2 border-transparent hover:border-indigo-400" href="#">Services</a></li>
+                        <li><a class="lg:p-4 py-3 px-0 block border-b-2 border-transparent hover:border-indigo-400" href="#">Contact</a></li>
+                        <li class="relative"></li>
+                            <button id="more-toggle" class="py-3 px-4 block border-b-2 border-transparent hover:border-indigo-400 focus:outline-none">
+                                More
+                            </button>
+                            <ul id="more-menu" class="hidden absolute bg-white shadow-lg mt-2 rounded-md w-48">
+                                <li><a class="block px-4 py-2 text-gray-700 hover:bg-gray-100" href="#">Blog</a></li>
+                                <li><a class="block px-4 py-2 text-gray-700 hover:bg-gray-100" href="#">Other Training</a></li>
+                                <li><a class="block px-4 py-2 text-gray-700 hover:bg-gray-100" href="#">Some Other NavLink</a></li>
+                            </ul>
+                        </li>
+                        <a href="{% url 'course-page' %}" class="text-white rounded-md px-4 py-1 bg-slate-900 h-9 mt-2 focus:ring-2 focus:outline-none hover:bg-gray-700">Start Course</a>
+                        
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Mobile Menu -->
+            <div class="lg:hidden hidden w-full" id="mobile-menu">
+                <ul class="text-base text-gray-700">
+                    <li><a class="py-3 px-4 block border-b-2 border-transparent hover:border-indigo-400" href="{% url 'home' %}">Home</a></li>
+                    <li><a class="py-3 px-4 block border-b-2 border-transparent hover:border-indigo-400" href="#">About</a></li>
+                    <li><a class="py-3 px-4 block border-b-2 border-transparent hover:border-indigo-400" href="#">Services</a></li>
+                    <li><a class="py-3 px-4 block border-b-2 border-transparent hover:border-indigo-400" href="#">Contact</a></li>
+                    <li class="relative"></li>
+                        <button id="more-toggle" class="py-3 px-4 block border-b-2 border-transparent hover:border-indigo-400 focus:outline-none">
+                            More
+                        </button>
+                        <ul id="more-menu" class="hidden absolute bg-white shadow-lg mt-2 rounded-md w-48">
+                            <li><a class="block px-4 py-2 text-gray-700 hover:bg-gray-100" href="#">Blog</a></li>
+                            <li><a class="block px-4 py-2 text-gray-700 hover:bg-gray-100" href="#">Other Training</a></li>
+                            <li><a class="block px-4 py-2 text-gray-700 hover:bg-gray-100" href="#">Some Other NavLink</a></li>
+                        </ul>
+                    </li>
+                   
+                    <button class="text-white rounded-md px-4 py-1 bg-slate-900 h-9 mt-2 focus:ring-2 focus:outline-none hover:bg-gray-700">Explore Courses</button>
+                </ul>
+            </div>
+        </nav>
+
+        <main>
+            {% block content %}
+            
+            {% endblock %}
+        </main>
+
+        <footer class="border-t bg-black text-white mb-0 mt-8">
+            <div class="container mx-auto px-4 py-8">
+              <div class="grid grid-cols-2 md:grid-cols-4 gap-8">
+                <div>
+                  <h3 class="font-semibold mb-4">For Parents</h3>
+                  <ul class="space-y-2 text-sm text-gray-500">
+                    <li>
+                      <Link href="#">Registration Process</Link>
+                    </li>
+                    <li>
+                      <Link href="#">Payment Management</Link>
+                    </li>
+                    <li>
+                      <Link href="#">Progress Tracking</Link>
+                    </li>
+                  </ul>
+                </div>
+                <div>
+                  <h3 class="font-semibold mb-4">For Teachers</h3>
+                  <ul class="space-y-2 text-sm text-gray-500">
+                    <li>
+                      <Link href="#">Apply as Teacher</Link>
+                    </li>
+                    <li>
+                      <Link href="#">Training Program</Link>
+                    </li>
+                    <li>
+                      <Link href="#">Resources</Link>
+                    </li>
+                  </ul>
+                </div>
+                <div>
+                  <h3 class="font-semibold mb-4">Company</h3>
+                  <ul class="space-y-2 text-sm text-gray-500">
+                    <li>
+                      <Link href="#">About Us</Link>
+                    </li>
+                    <li>
+                      <Link href="#">Contact</Link>
+                    </li>
+                    <li>
+                      <Link href="#">Careers</Link>
+                    </li>
+                  </ul>
+                </div>
+                <div>
+                  <h3 class="font-semibold mb-4">Legal</h3>
+                  <ul class="space-y-2 text-sm text-gray-500">
+                    <li>
+                      <Link href="#">Terms of Service</Link>
+                    </li>
+                    <li>
+                      <Link href="#">Privacy Policy</Link>
+                    </li>
+                    <li>
+                      <Link href="#">Help Center</Link>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+              <div class=" mt-8 pt-8 text-center text-sm text-gray-500">
+                <p>© 2025 AMI Education. All rights reserved.</p>
+              </div>
+            </div>
+          </footer>
+        <script>
+            document.getElementById('menu-toggle').addEventListener('click', function() {
+                var mobileMenu = document.getElementById('mobile-menu');
+                mobileMenu.classList.toggle('hidden');
+            });
+
+      
+            document.getElementById('more-toggle').addEventListener('click', function() {
+                var moreMenu = document.getElementById('more-menu');
+                moreMenu.classList.toggle('hidden');
+            });
+                    
+        </script>
+
+        <!-- Your content goes here -->
+        
+    </body>
+</html>
