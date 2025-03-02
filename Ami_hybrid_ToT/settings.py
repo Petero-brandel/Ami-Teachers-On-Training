@@ -139,7 +139,7 @@ STATIC_URL = '/static/'  # URL prefix for static files
 
 # Directories where Django will look for static files
 STATICFILES_DIRS = [
-    BASE_DIR / 'static',  # Add the 'static' directory
+    os.path.join(BASE_DIR, 'static'),  # Adjust this path to match your project structure
 ]
 
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
