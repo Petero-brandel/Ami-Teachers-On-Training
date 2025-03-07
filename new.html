@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Coursera Replica</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            background-color: #f8f9fa;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .wrapper {
+            width: 100%;
+            max-width: 1200px;
+            height: 600px;
+            display: flex;
+            gap: 20px;
+        }
+
+        .card {
+            background-color: white;
+            border-radius: 10px;
+            padding: 25px;
+            width: 33%;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            text-align: left;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .card img {
+            width: 100%;
+            border-radius: 10px;
+            margin-bottom: 15px;
+            height: 180px;
+            object-fit: cover;
+        }
+
+        .card h2 {
+            font-size: 22px;
+            margin-bottom: 10px;
+            color: #000;
+        }
+
+        .card p {
+            font-size: 15px;
+            color: #333;
+            margin-bottom: 15px;
+            line-height: 1.5;
+        }
+
+        .card a {
+            color: #0073e6;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 15px;
+        }
+
+        .card a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <div class="wrapper">
+        <div class="card">
+            <img src="https://source.unsplash.com/500x300/?certificate,graduation" alt="Coursera Plus">
+            <h2>Open new doors with Coursera Plus</h2>
+            <p>Unlimited access to 10,000+ world-class courses, hands-on projects, and job-ready certificate programs - all included in your subscription.</p>
+            <a href="#">Learn more →</a>
+        </div>
+        <div class="card">
+            <img src="https://source.unsplash.com/500x300/?laptop,student" alt="Online Degree">
+            <h2>Advance your career with an online degree</h2>
+            <p>Earn a degree from world-class universities - 100% online.</p>
+            <a href="#">Explore degrees →</a>
+        </div>
+        <div class="card">
+            <img src="https://source.unsplash.com/500x300/?business,corporate" alt="Coursera Business">
+            <h2>Join over 3,400 global companies that choose Coursera for Business</h2>
+            <p>Upskill your employees to excel in the digital economy.</p>
+            <a href="#">Learn more →</a>
+        </div>
+    </div>
+</body>
+</html>

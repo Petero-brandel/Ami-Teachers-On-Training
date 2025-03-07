@@ -42,13 +42,21 @@ module.exports = {
         // '../../**/*.py'
     ],
     theme: {
-        extend: {},
+        extend: {
+            screens: {
+                sm: '340px',
+                md: '540px',
+                lg: '768px',
+                xl: '1180px'
+            }
+        },
     },
     plugins: [
         /**
          * '@tailwindcss/forms' is the forms plugin that provides a minimal styling
          * for forms. If you don't like it or have own styling for forms,
          * comment the line below to disable '@tailwindcss/forms'.
+         * 
          */
         require('@tailwindcss/forms'),
         require('@tailwindcss/typography'),

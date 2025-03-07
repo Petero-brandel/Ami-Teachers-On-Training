@@ -1,0 +1,76 @@
+{% extends "core/base.html" %}
+{% load static %}
+{% block content %}
+<footer class="border-t bg-black text-white mb-0 mt-8">
+    <div class="container mx-auto px-4 py-8">
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-8">
+        <div>
+          <h3 class="font-semibold mb-4">For Parents</h3>
+          <ul class="space-y-2 text-sm text-gray-500">
+            <li>
+              <Link href="#">Registration Process</Link>
+            </li>
+            <li>
+              <Link href="#">Payment Management</Link>
+            </li>
+            <li>
+              <Link href="#">Progress Tracking</Link>
+            </li>
+          </ul>
+        </div>
+        <div>
+          <h3 class="font-semibold mb-4">For Teachers</h3>
+          <ul class="space-y-2 text-sm text-gray-500">
+            <li>
+              <Link href="#">Apply as Teacher</Link>
+            </li>
+
+            <li>
+              <Link href="#">Training Program</Link>
+            </li>
+
+            <li>
+              <Link href="#">Resources</Link>
+              <div class="flex mt-[80px] w-[800px]">
+                <img class='w-[90px] h-auto mr-6 sm:' src="{% static '\images\asset-b.png'%}">
+                <h1 class="font-extrabold text-[32px] text-white">Academic Medic Institute</h1>
+             </div>
+            </li>
+
+          </ul>
+        </div>
+        <div>
+          <h3 class="font-semibold mb-4">Company</h3>
+          <ul class="space-y-2 text-sm text-gray-500">
+            <li>
+              <Link href="#">About Us</Link>
+            </li>
+            <li>
+              <Link href="#">Contact</Link>
+            </li>
+            <li>
+              <Link href="#">Careers</Link>
+            </li>
+          </ul>
+        </div>
+        <div>
+          <h3 class="font-semibold mb-4">Legal</h3>
+          <ul class="space-y-2 text-sm text-gray-500">
+            <li>
+              <Link href="#">Terms of Service</Link>
+            </li>
+            <li>
+              <Link href="#">Privacy Policy</Link>
+            </li>
+            <li>
+              <Link href="#">Help Center</Link>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div class=" mt-8 pt-8 text-center text-sm text-gray-500">
+        <p>© 2025 AMI Education. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+{% endblock content %}

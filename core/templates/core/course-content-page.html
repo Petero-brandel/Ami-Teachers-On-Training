@@ -1,9 +1,16 @@
 {% extends "core/base.html" %}
 {% block content %}
 
-<div class="container">
-    <button class="bg-[#DDDDDD] border border-spacing-2 px-4 mt-12 ml-8 mb-6 py-1 rounded-lg outline-none text-left text-[10px]">Powered By Ami</button>
+{% include "core/components/nav.html" %}
+
+<div class="">
+    <button class="bg-[#DDDDDD] border border-spacing-2 px-4 mt-12 ml-8 py-1 rounded-lg outline-none text-left text-[10px]">Powered By Ami</button>
 </div>
 
+<div>
+    {% include "core/components/video-plate.html" %}
+</div>
+
+{% include "core/components/footer.html" %}
 {% endblock content %}
 

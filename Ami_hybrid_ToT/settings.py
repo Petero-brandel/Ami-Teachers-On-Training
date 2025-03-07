@@ -152,4 +152,3 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-NPM_BIN_PATH = "/usr/bin/npm"  # Default path for npm on Render
