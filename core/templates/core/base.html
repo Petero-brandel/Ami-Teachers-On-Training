@@ -7,19 +7,36 @@
         <title>Ami</title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
+        <!-- RemixIcon CSS -->
+        <link href="https://cdn.jsdelivr.net/npm/remixicon@4.2.0/fonts/remixicon.css" rel="stylesheet">
+        <!-- AOS CSS -->
+        <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet">
+        <!-- Tailwind CSS -->
         {% tailwind_css %}
     </head>
     <body class="bg-gray-100">
-
-
         <main>
             {% block content %}
-            
+            <!-- Content from child templates will go here -->
             {% endblock %}
         </main>
 
-        
+        <!-- AOS JS -->
+        <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+        <script>
+            // Initialize AOS
+            document.addEventListener('DOMContentLoaded', function () {
+                AOS.init({
+                    duration: 1000, // Animation duration in milliseconds
+                    once: true, // Whether animation should happen only once
+                });
+            });
+        </script>
 
-        
+        <!-- Your Custom Scripts -->
+        <script>
+            // Add your custom JavaScript here
+            console.log("AOS initialized and custom scripts loaded!");
+        </script>
     </body>
 </html>

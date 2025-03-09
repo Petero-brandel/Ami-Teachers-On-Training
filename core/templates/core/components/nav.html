@@ -8,7 +8,8 @@
 
         <!-- Logo -->
         <div class="text-xl font-bold ml-0">
-            <img class='lg:w-[80px] h-auto sm:w-8 ' src="{% static '\images\asset-6.png'%}"> 
+            <i class="ri-blogger-line w-10"></i> Ami Education
+            <!-- <img class='lg:w-[80px] h-auto sm:w-8 ' src="{% static '\images\asset-6.png'%}">  -->
         </div>
 
         <!-- Mobile Menu Toggle Button -->
@@ -29,7 +30,7 @@
                 <li><a class="lg:p-4 py-3 px-0 block border-b-2 border-transparent hover:border-indigo-400" href="#">Contact</a></li>
                 <li class="relative"></li>
                     <button id="more-toggle" class="py-3 px-4 block border-b-2 border-transparent hover:border-indigo-400 focus:outline-none">
-                        More
+                         More <i class="ri-arrow-down-s-fill"></i>
                     </button>
                     <ul id="more-menu" class="hidden absolute bg-white shadow-lg mt-2 rounded-md w-48">
                         <li><a class="block px-4 py-2 text-gray-700 hover:bg-gray-100" href="#">Blog</a></li>
@@ -46,22 +47,22 @@
     <!-- Mobile Menu -->
     <div class="lg:hidden hidden w-full" id="mobile-menu">
         <ul class="text-base text-gray-700">
-            <li><a class="py-3 px-4 block border-b-2 border-transparent hover:border-indigo-400" href="{% url 'home' %}">Home</a></li>
-            <li><a class="py-3 px-4 block border-b-2 border-transparent hover:border-indigo-400" href="#">About</a></li>
-            <li><a class="py-3 px-4 block border-b-2 border-transparent hover:border-indigo-400" href="#">Services</a></li>
-            <li><a class="py-3 px-4 block border-b-2 border-transparent hover:border-indigo-400" href="#">Contact</a></li>
+            <li><a class="py-3 px-4 block border-b-2 border-transparent hover:border-indigo-400" href="{% url 'home' %}"><i class="ri-home-line"></i> Home</a></li>
+            <li><a class="py-3 px-4 block border-b-2 border-transparent hover:border-indigo-400" href="#"><i class="ri-shake-hands-line"></i> About</a></li>
+            <li><a class="py-3 px-4 block border-b-2 border-transparent hover:border-indigo-400" href="#"><i class="ri-service-fill"></i> Services</a></li>
+            <li><a class="py-3 px-4 block border-b-2 border-transparent hover:border-indigo-400" href="#"><i class="ri-customer-service-line"></i> Contact</a></li>
             <li class="relative"></li>
                 <button id="more-toggle" class="py-3 px-4 block border-b-2 border-transparent hover:border-indigo-400 focus:outline-none">
-                    More
+                    <i class="ri-arrow-down-s-fill"></i> More
                 </button>
-                <ul id="more-menu" class="hidden absolute bg-white shadow-lg mt-2 rounded-md w-48">
+                <ul id="more-menu" class="hidden absolute mt-10  bg-white shadow-lg rounded-md w-48">
                     <li><a class="block px-4 py-2 text-gray-700 hover:bg-gray-100" href="#">Blog</a></li>
                     <li><a class="block px-4 py-2 text-gray-700 hover:bg-gray-100" href="#">Other Training</a></li>
                     <li><a class="block px-4 py-2 text-gray-700 hover:bg-gray-100" href="#">Some Other NavLink</a></li>
                 </ul>
             </li>
            
-            <button class="text-white rounded-md px-4 py-1 bg-slate-900 h-9 mt-2 focus:ring-2 focus:outline-none hover:bg-gray-700">Explore Courses</button>
+            <a href="{% url 'course-page' %}" class="text-white rounded-md px-4 py-1 bg-slate-900 h-9 mt-2 focus:ring-2 focus:outline-none hover:bg-gray-700">Explore Courses</a>
         </ul>
     </div>
 </nav>

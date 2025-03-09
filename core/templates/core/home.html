@@ -5,47 +5,44 @@
 {% include "core/components/nav.html" %}
 
 <!-- Hero Section -->
-<div class="hero bg-cover bg-center min-h-screen md:h-[50px] bg-black mx-auto ">
-    <div class="text-white px-4 sm:px-6 lg:px-8 text-center">
+<div class="min-h-screen flex items-center justify-center bg-black">
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8 text-center">
         <!-- Main Heading -->
-        <h1 class="xl:text-7xl sm:text-3xl sm:text-left md:text-6xl lg:text-7xl font-bold mb-6 leading-tight px-6 pt-[100px] text-left">
-            Every Child Deserves a Good Learning Environment!, <br>
+        <h1 class="text-4xl sm:text-4xl sm:text-center md:text-5xl lg:text-6xl font-bold text-white mb-6 leading-tight">
+            Every Child Deserves a Good Learning Environment! <br class="hidden sm:block">
             Every Good Learning Environment Needs a Skilled Teacher!
         </h1>
 
         <!-- Subheading -->
-        <p class="text-lg px-4 text-left sm:text-xl md:text-2xl mb-8 font-light leading-relaxed">
+        <p class="text-lg sm:text-xl md:text-2xl text-gray-300 mb-8 font-light max-w-3xl mx-auto leading-relaxed" data-aos="fade-up" data-aos-delay="100">
             10x your Teaching Skills with our Expertly Curated Teachers 
             On Training Course and Highly Effective Resources.
         </p>
 
         <!-- Call-to-Action Button -->
-        <button class="bg-blue-600 w-[350px] text-white px-11 py-3 rounded-lg font-semibold hover:bg-blue-700 transition duration-300">
+        <button class="bg-blue-600 text-white px-8 py-3 sm:px-10 sm:py-4 rounded-lg font-semibold hover:bg-blue-700 transition duration-300 transform hover:scale-105">
             Start Learning!
         </button>
     </div>
 </div>
 
 <!-- Powered by Button -->
-<div class="mt-6 flex justify-center">
-    <div class="flex justify-center">
-        <a href="{% url 'home' %}" class="bg-gray-200 border border-gray-400 px-4 py-2 rounded-lg text-xs text-gray-700 hover:bg-gray-300 transition">
-            Powered By:  <img class='w-[40px] h-auto mr-6 sm:' src="{% static '\images\asset-6.png'%}">
-        </a>
-    </div>
+<div class="mt-8 flex justify-center">
+    <a href="{% url 'home' %}" class="bg-gray-200 border border-gray-400 px-4 py-2 rounded-lg text-xs text-gray-700 hover:bg-gray-300 transition flex items-center space-x-2">
+        <span>Powered By:</span>
+        <img class="w-10 h-auto" src="{% static 'images/asset-6.png' %}" alt="Powered By Logo">
+    </a>
 </div>
 
-
-
 <!-- Features Section -->
-<section class="mt-8">
+<section class="mt-0">
     <div class="w-full max-w-5xl mx-auto">
         {% include "core/components/features.html" %}
     </div>
 </section>
 
 <!-- Footer -->
-<div class="mt-10">
+<div class="mt-20">
     {% include "core/components/footer.html" %}
 </div>
 
