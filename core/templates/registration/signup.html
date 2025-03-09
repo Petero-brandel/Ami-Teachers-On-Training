@@ -1,0 +1,89 @@
+{% extends "core/base.html" %}
+{% load static %}
+
+{% block content %}
+{% include "core/components/nav.html" %}
+
+<p class="text-center p-8 mt-10"> Your first step toward acquiring a world-class Teachers on Training with Ami </p>
+
+<div class="max-w-md mx-auto bg-white p-8 rounded-lg shadow-md">
+    <h2 class="text-2xl font-bold mb-6 text-center">Create an Account</h2>
+
+    {% if form.non_field_errors %}
+        <div style="color: #ff0000; font-size: 14px; margin-bottom: 10px;">
+            {{ form.non_field_errors }}
+        </div>
+    {% endif %}
+
+    <form method="post">
+        {% csrf_token %}
+        
+        <!-- Username Field -->
+        <div class="mb-4">
+            <label for="{{ form.username.id_for_label }}" class="block text-gray-700">Username</label>
+            {{ form.username }}
+            {% if form.username.errors %}
+                <div class="text-red-500 text-sm mt-1">
+                    {{ form.username.errors }}
+                </div>
+            {% endif %}
+        </div>
+
+        <!-- Email Field -->
+        <div class="mb-4">
+            <label for="{{ form.email.id_for_label }}" class="block text-gray-700">Email Address</label>
+            {{ form.email }}
+            {% if form.email.errors %}
+                <div class="text-red-500 text-sm mt-1">
+                    {{ form.email.errors }}
+                </div>
+            {% endif %}
+        </div>
+
+        <!-- Password Field -->
+        <div class="mb-4">
+            <label for="{{ form.password1.id_for_label }}" class="block text-gray-700">Password</label>
+            {{ form.password1 }}
+            {% if form.password1.errors %}
+                <div class="text-red-500 text-sm mt-1">
+                    {{ form.password1.errors }}
+                </div>
+            {% endif %}
+        </div>
+
+        <!-- Confirm Password Field -->
+        <div class="mb-4">
+            <label for="{{ form.password2.id_for_label }}" class="block text-gray-700">Confirm Password</label>
+            {{ form.password2 }}
+            {% if form.password2.errors %}
+                <div class="text-red-500 text-sm mt-1">
+                    {{ form.password2.errors }}
+                </div>
+            {% endif %}
+        </div>
+
+        <!-- Privacy Policy Field -->
+        <div class="mb-4">
+            <label class="inline-flex items-center">
+                {{ form.privacy_policy }}
+                <span class="ml-2 text-gray-700">I agree to the <a href="#" class="text-indigo-600 underline">Privacy Policy</a></span>
+            </label>
+            {% if form.privacy_policy.errors %}
+                <div class="text-red-500 text-sm mt-1">
+                    {{ form.privacy_policy.errors }}
+                </div>
+            {% endif %}
+        </div>
+
+        <!-- Submit Button -->
+        <div class="flex items-center justify-between">
+            <button type="submit" class="w-full bg-indigo-500 text-white py-2 px-4 rounded-md hover:underline hover:bg-indigo-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">Sign Up</button>
+        </div>
+    </form>
+
+    <div class="mt-4">Already have an account?
+        <a class="text-blue-700 hover:underline hover:text-blue-500" href="/login">Login</a>
+    </div>
+</div>
+
+{% endblock %}
