@@ -3,8 +3,19 @@
 
 {% include "core/components/nav.html" %}
 
-<div class="">
-    <button class="bg-[#DDDDDD] border border-spacing-2 px-4 mt-12 ml-8 py-1 rounded-lg outline-none text-left text-[10px]">Powered By Ami</button>
+<div class="flex justify-between">
+    <div class="">
+        <button class="px-4 mt-12 ml-8 py-1 rounded-lg outline-none text-left text-[10px]">Powered By Ami</button>
+    </div>
+
+    {% if user.is_superuser %}
+        <div>
+            <a class="float-right p-2 text-white mt-9 mr-4
+             bg-blue-700 rounded-xl hover:bg-blue-800" 
+             href="{% url 'update-course' %}"><i class="ri-add-circle-fill"></i> 
+             Add to Course</a>
+        </div>
+    {% endif %}   
 </div>
 
 <div>

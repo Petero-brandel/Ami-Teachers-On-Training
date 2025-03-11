@@ -1,6 +1,8 @@
 from django import forms
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
+from .models import UpdateCourse
+from django.forms import ModelForm
 
 class CustomSignupForm(UserCreationForm):
     email = forms.EmailField(
@@ -46,3 +48,13 @@ class CustomSignupForm(UserCreationForm):
             'class': 'block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm',
             'placeholder': 'Confirm Password'
         })
+        
+class UpdateCourseForm(ModelForm):
+    class Meta:
+        model = UpdateCourse
+        fields = ['course_title', 'description', 'course_video', 'course_image']  # Include any fields you want to allow users to update
+        widgets = {
+            'description': forms.Textarea(attrs={'rows': 3}),
+            'course_title': forms.Textarea(attrs={'rows': 1}),
+            
+        }

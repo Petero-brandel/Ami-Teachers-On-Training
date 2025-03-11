@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
-from django.contrib.auth import authenticate, login
+from django.contrib.auth import authenticate, login, logout
 from django.contrib import messages
-from .forms import CustomSignupForm  # Import your custom form
+from .forms import CustomSignupForm, UpdateCourseForm  # Import your custom form
 from django.contrib.auth.models import User
 from django.contrib.auth.decorators import login_required
 
@@ -42,10 +42,12 @@ def login_view(request):
     return render(request, 'registration/login.html')
 
 
+def logout_view(request):
+    logout(request)
+    return redirect('/login')
+
 def home(request):
     return render(request, 'core/home.html', {})
-
-
 
 
 # Course page view (requires login)
@@ -53,3 +55,17 @@ def home(request):
 @login_required
 def course_page(request):
     return render(request, 'core/course-content-page.html', {})
+
+def update_course(request):
+    form = UpdateCourseForm()
+    
+    if request.method == 'POST':
+    
+        form = UpdateCourseForm(request.post)
+        if form.is_valid():
+            form.save()
+            return redirect('course-page')
+        else:
+            form = UpdateCourseForm()
+    
+    return render(request, 'core/update-course.html', {'form': form})

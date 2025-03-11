@@ -1,0 +1,43 @@
+{% extends "core/base.html" %}
+{% load static %}
+
+{% block content %}
+
+<div>
+    <button id="nextButton" class="outline-none font-semibold bg-blue-700 text-white px-4 
+    py-2 rounded-lg border border-[#d8d8d8] focus:ring-slate-100
+    focus:bg-blue-700 focus:text-white hover:bg-blue-700 hover:text-white flex items-center"
+    onclick="showLoader()">
+    <span id="loader2" class="loader2 mr-2 hidden"></span>
+    Next <i class="ml-2 ri-skip-right-line"></i></button>
+
+    <script>
+        function showLoader() {
+            var button = document.getElementById('nextButton');
+            var loader2 = document.getElementById('loader2');
+            loader2.classList.remove('hidden');
+            button.disabled = true;
+            setTimeout(function() {
+                loader2.classList.add('hidden');
+                button.disabled = false;
+                // Add your navigation logic here
+            }, 2000); // 2 seconds delay
+        }
+    </script>
+    <style>
+        .loader2 {
+            border: 2px solid #f3f3f3;
+            border-top: 2px solid #3498db;
+            border-radius: 50%;
+            width: 12px;
+            height: 12px;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+    </style>
+</div>
+{% endblock content %}

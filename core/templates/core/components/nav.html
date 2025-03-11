@@ -8,7 +8,7 @@
 
         <!-- Logo -->
         <div class="text-xl font-bold ml-0">
-            <i class="ri-blogger-line w-10"></i> Ami Education
+            <i class="ri-blogger-line w-10"></i> TutorGo~ 
             <!-- <img class='lg:w-[80px] h-auto sm:w-8 ' src="{% static '\images\asset-6.png'%}">  -->
         </div>
 
@@ -47,11 +47,34 @@
 
     <!-- Mobile Menu -->
     <div class="lg:hidden hidden w-full" id="mobile-menu">
+
         <ul class="text-base text-gray-700">
-            <li><a class="py-3 px-4 block border-b-2 border-transparent hover:border-[#555]" href="{% url 'home' %}"><i class="ri-home-line"></i> Home</a></li>
-            <li><a class="py-3 px-4 block border-b-2 border-transparent hover:border-[#555]" href="#"><i class="ri-shake-hands-line"></i> About</a></li>
-            <li><a class="py-3 px-4 block border-b-2 border-transparent hover:border-[#555]" href="#"><i class="ri-service-fill"></i> Services</a></li>
-            <li><a class="py-3 px-4 block border-b-2 border-transparent hover:border-[#555]" href="#"><i class="ri-customer-service-line"></i> Contact</a></li>
+
+            {% if request.user.is_authenticated %}
+            <li class="relative">
+                <button id="profile-toggle" class="py-3 px-4 block border-b-2 border-transparent hover:text-gray-500 focus:outline-none text-xl">
+                    {{request.user.username}} <i class="ri-arrow-down-s-fill"></i>
+                </button>
+                <ul id="profile-menu" class="hidden absolute bg-white shadow-lg mt-2 rounded-md w-48">
+                    <li><a class="block px-4 py-2 text-gray-700 hover:bg-gray-100" href="">View Profile</a></li>
+                    <li><a class="block px-4 py-2 text-gray-700 hover:bg-gray-100" href="">Settings</a></li>
+                    <li><a class="block px-4 py-2 text-gray-700 hover:bg-gray-100" href="/logout">Logout</a></li>
+                </ul>
+            </li>
+
+            <script>
+                document.getElementById('profile-toggle').addEventListener('click', function() {
+                    var profileMenu = document.getElementById('profile-menu');
+                    profileMenu.classList.toggle('hidden');
+                });
+            </script>
+            {% else %}
+            <li><a href="/login">Sign In</a></li>  
+            {% endif %}
+            <li><a class="py-3 px-4 block border-b-2 border-transparent focus:bg-gray-100 active:bg-gray-100 hover:bg-gray-100" href="{% url 'home' %}"><i class="ri-home-line"></i> Home</a></li>
+            <li><a class="py-3 px-4 block border-b-2 border-transparent focus:bg-gray-100 active:bg-gray-100 hover:bg-gray-100" href="#"><i class="ri-shake-hands-line"></i> About</a></li>
+            <li><a class="py-3 px-4 block border-b-2 border-transparent focus:bg-gray-100 active:bg-gray-100 hover:bg-gray-100" href="#"><i class="ri-service-fill"></i> Services</a></li>
+            <li><a class="py-3 px-4 block border-b-2 border-transparent focus:bg-gray-100 active:bg-gray-100 hover:bg-gray-100" href="#"><i class="ri-customer-service-line"></i> Contact</a></li>
             <li class="relative"></li>
                 <button id="more-toggle" class="py-3 px-4 block border-b-2 border-transparent hover:border-indigo-400 focus:outline-none">
                     <i class="ri-arrow-down-s-fill"></i> More

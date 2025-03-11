@@ -1,0 +1,42 @@
+{% extends "core/base.html" %}
+{% load static %}
+
+{% block content %}
+<div>
+    <button id="prevButton" class="outline-none font-semibold bg-[#f3f2f2] text-black px-4 
+    py-2 rounded-lg border border-[#d8d8d8] focus:ring-slate-100
+    focus:bg-blue-700 focus:text-white hover:bg-blue-700 hover:text-white flex items-center"
+    onclick="showLoader()">
+    <span id="loader" class="loader mr-2 hidden"></span>
+    Previous</button>
+
+    <script>
+        function showLoader() {
+            var button = document.getElementById('prevButton');
+            var loader = document.getElementById('loader');
+            loader.classList.remove('hidden');
+            button.disabled = true;
+            setTimeout(function() {
+                loader.classList.add('hidden');
+                button.disabled = false;
+                // Add your navigation logic here
+            }, 2000); // 2 seconds delay
+        }
+    </script>
+    <style>
+        .loader {
+            border: 2px solid #f3f3f3;
+            border-top: 2px solid #3498db;
+            border-radius: 50%;
+            width: 12px;
+            height: 12px;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+    </style>
+</div>
+{% endblock %}
