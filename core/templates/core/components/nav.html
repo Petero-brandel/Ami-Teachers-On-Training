@@ -8,7 +8,7 @@
 
         <!-- Logo -->
         <div class="text-xl font-bold ml-0">
-            <i class="ri-blogger-line w-10"></i> TutorGo~ 
+            <i class="ri-blogger-line w-10"></i> ami HomeTeacher
             <!-- <img class='lg:w-[80px] h-auto sm:w-8 ' src="{% static '\images\asset-6.png'%}">  -->
         </div>
 
@@ -39,7 +39,7 @@
                     </ul>
                 </li>
     
-                <a href="{% url 'login' %}" class="text-white rounded-md px-4 py-1 bg-slate-900 h-9 mt-2 focus:ring-2 focus:outline-none hover:bg-gray-700">Start Course</a>
+                <a href="{% url 'course-page' %}" class="text-white rounded-md px-4 py-1 bg-slate-900 h-9 mt-2 focus:ring-2 focus:outline-none hover:bg-gray-700">Start Course</a>
                 
             </ul>
         </div>
@@ -89,7 +89,8 @@
             <li></li>
            </ul>
           
-            <a href="/login" class="text-white rounded-md px-4 py-1 bg-slate-900 h-9 mt-2 focus:ring-2 focus:outline-none hover:bg-gray-700">Start Courses</a>
+            <a href="{% url 'course-page' %}" class="text-white 
+            rounded-md px-4 py-1 bg-slate-900 h-9 mt-2 focus:ring-2 focus:outline-none hover:bg-gray-700">Go to Courses</a>
         </ul>
     </div>
 </nav>
