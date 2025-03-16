@@ -1,10 +1,9 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login, logout
 from django.contrib import messages
-from .forms import CustomSignupForm, AddContentForm  # Import your custom form
+from .forms import CustomSignupForm # Import your custom form
 from django.contrib.auth.models import User
 from django.contrib.auth.decorators import login_required
-from .models import Content
 
 
 def sign_up(request):
@@ -55,13 +54,7 @@ def home(request):
 @login_required(login_url='/login')
 def course_page(request):
     
-    
-    course_content = Content.objects.all()
-    
-    context = {
-        'course_content': course_content
-    }
-    return render(request, 'core/course-content-page.html', context)
+    return render(request, 'core/course-content-page.html', {})
 
 def Add_content(request):
     form = AddContentForm()

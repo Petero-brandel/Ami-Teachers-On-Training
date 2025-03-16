@@ -1,7 +1,6 @@
 from django import forms
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
-from .models import Content
 from django.forms import ModelForm
 
 class CustomSignupForm(UserCreationForm):
@@ -49,12 +48,12 @@ class CustomSignupForm(UserCreationForm):
             'placeholder': 'Confirm Password'
         })
         
-class AddContentForm(ModelForm):
-    class Meta:
-        model = Content
-        fields = ['course_title', 'description', 'course_video', 'course_image']  # Include any fields you want to allow users to update
-        widgets = {
-            'description': forms.Textarea(attrs={'rows': 3}),
-            'course_title': forms.Textarea(attrs={'rows': 1}),
+# class AddContentForm(ModelForm):
+#     class Meta:
+#         model = Content
+#         fields = ['course_title', 'description', 'course_video', 'course_image']  # Include any fields you want to allow users to update
+#         widgets = {
+#             'description': forms.Textarea(attrs={'rows': 3}),
+#             'course_title': forms.Textarea(attrs={'rows': 1}),
             
-        }
+#         }
