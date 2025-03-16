@@ -1,27 +1,16 @@
 from django.db import models
 
-# Create your models here.
-
-class Content(models.Model):
-    course_title = models.CharField(max_length=100)
-    description = models.TextField()
-    text_material = models.TextField()
-    course_image = models.ImageField(upload_to='course_images', null=True, blank=True)
-    course_video = models.FileField(upload_to='course_videos', null=True, blank=True)
-    course_created = models.DateTimeField(auto_now_add=True)
-    course_updated = models.DateTimeField(auto_now=True)
+class Module(models.Model):
+    module_name = models.CharField(max_length=100)
+    module_description = models.TextField()
     
     def __str__(self):
-        return self.course_title
-
-# class UpdateCourse(models.Model):
-#     course_title = models.CharField(max_length=100)
-#     description = models.TextField()
-#     text_material = models.TextField()
-#     course_image = models.ImageField(upload_to='course_images', null=True, blank=True)
-#     course_video = models.FileField(upload_to='course_videos', null=True, blank=True)
-#     course_created = models.DateTimeField(auto_now_add=True)
-#     course_updated = models.DateTimeField(auto_now=True)
+        return self.module_name
     
-#     def __str__(self):
-#         return self.course_title
+
+class Lesson(models.Model):
+    module = models.ForeignKey(Module, on_delete=models.CASCADE, related_name='lessons')
+    title = models.CharField(max_length=250)
+    description = models.CharField
+    content = models.TextField()
+    video = models.FloatField
