@@ -1,9 +1,10 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login, logout
 from django.contrib import messages
-from .forms import CustomSignupForm # Import your custom form
+from .forms import CustomSignupForm, LessonForm, ModuleForm
 from django.contrib.auth.models import User
 from django.contrib.auth.decorators import login_required
+from .models import Module
 
 
 def sign_up(request):
@@ -54,18 +55,31 @@ def home(request):
 @login_required(login_url='/login')
 def course_page(request):
     
-    return render(request, 'core/course-content-page.html', {})
+    modules = Module.objects.all()
+    
+    context = {
+        'modules': modules
+    }
+    
+    return render(request, 'core/course-content-page.html', context)
 
-def Add_content(request):
-    form = AddContentForm()
+
+# Creating a Module
+def create_module(request):
+    form =  ModuleForm()
     
     if request.method == 'POST':
-    
-        form = AddContentForm(request.POST, request.FILES)
+        form =  ModuleForm(
+            request.POST, request.FILES
+        )
+        
         if form.is_valid():
             form.save()
             return redirect('course-page')
         else:
-            form = AddContentForm()
-    
-    return render(request, 'core/update-course.html', {'form': form})
+            form =  ModuleForm()
+            
+            
+    return render(request, 'core/create-module.html', {'form':form})
+
+

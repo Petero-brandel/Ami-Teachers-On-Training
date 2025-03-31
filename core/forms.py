@@ -2,6 +2,7 @@ from django import forms
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
 from django.forms import ModelForm
+from .models import Module, Lesson
 
 class CustomSignupForm(UserCreationForm):
     email = forms.EmailField(
@@ -48,12 +49,49 @@ class CustomSignupForm(UserCreationForm):
             'placeholder': 'Confirm Password'
         })
         
-# class AddContentForm(ModelForm):
-#     class Meta:
-#         model = Content
-#         fields = ['course_title', 'description', 'course_video', 'course_image']  # Include any fields you want to allow users to update
-#         widgets = {
-#             'description': forms.Textarea(attrs={'rows': 3}),
-#             'course_title': forms.Textarea(attrs={'rows': 1}),
+        
+
+class ModuleForm(forms.ModelForm):
+    class Meta:
+        model = Module
+        fields = ['module_number', 'module_title', 'image']
+        widgets = {
+            'module_name': forms.TextInput(attrs={
+                'class': 'flex items-center justify-center w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500',
+                'placeholder': 'Enter module name',
+            }),
+            'module_description': forms.Textarea(attrs={
+                'class': 'w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500',
+                'placeholder': 'Enter module description',
+                'rows': 4,
+            }),
+            'image': forms.FileInput(attrs={
+                'class': 'w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 file:mr-4 file:py-2 file:px-4 file:rounded-lg file:border-0 file:text-sm file:font-semibold file:bg-blue-50 file:text-blue-700 hover:file:bg-blue-100',  # Tailwind classes for file input
+            }),
+        }
+
+
+class LessonForm(forms.ModelForm):
+    class Meta:
+        model = Lesson
+        fields = ['title', 'description', 'content', 'video']
+        widgets = {
+            'title': forms.TextInput(attrs={
+                'class': 'w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500',
+                'placeholder': 'Enter lesson title',
+            }),
+            'description': forms.TextInput(attrs={
+                'class': 'w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500',
+                'placeholder': 'Enter lesson description',
+            }),
+            'content': forms.Textarea(attrs={
+                'class': 'w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500',
+                'placeholder': 'Enter lesson content',
+                'rows': 4,
+            }),
+            'video': forms.NumberInput(attrs={
+                'class': 'w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500',
+                'placeholder': 'Upload a Video',
+            }),
             
-#         }
+        }
