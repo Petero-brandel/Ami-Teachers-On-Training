@@ -821,6 +821,10 @@ select {
   margin-bottom: 0.5rem;
 }
 
+.mb-20 {
+  margin-bottom: 5rem;
+}
+
 .mb-4 {
   margin-bottom: 1rem;
 }
@@ -843,10 +847,6 @@ select {
 
 .ml-8 {
   margin-left: 2rem;
-}
-
-.mr-10 {
-  margin-right: 2.5rem;
 }
 
 .mr-2 {
@@ -1145,11 +1145,6 @@ select {
   background-color: rgb(99 102 241 / var(--tw-bg-opacity, 1));
 }
 
-.bg-red-600 {
-  --tw-bg-opacity: 1;
-  background-color: rgb(220 38 38 / var(--tw-bg-opacity, 1));
-}
-
 .bg-slate-50 {
   --tw-bg-opacity: 1;
   background-color: rgb(248 250 252 / var(--tw-bg-opacity, 1));
@@ -1222,11 +1217,6 @@ select {
   padding-bottom: 0.75rem;
 }
 
-.py-4 {
-  padding-top: 1rem;
-  padding-bottom: 1rem;
-}
-
 .py-8 {
   padding-top: 2rem;
   padding-bottom: 2rem;
@@ -1238,10 +1228,6 @@ select {
 
 .pl-6 {
   padding-left: 1.5rem;
-}
-
-.pr-16 {
-  padding-right: 4rem;
 }
 
 .pr-2 {
@@ -1656,6 +1642,11 @@ select {
   border-color: rgb(99 102 241 / var(--tw-border-opacity, 1));
 }
 
+.focus\:bg-blue-600:focus {
+  --tw-bg-opacity: 1;
+  background-color: rgb(37 99 235 / var(--tw-bg-opacity, 1));
+}
+
 .focus\:bg-blue-700:focus {
   --tw-bg-opacity: 1;
   background-color: rgb(29 78 216 / var(--tw-bg-opacity, 1));
@@ -1701,9 +1692,19 @@ select {
   --tw-ring-offset-width: 2px;
 }
 
+.active\:bg-blue-600:active {
+  --tw-bg-opacity: 1;
+  background-color: rgb(37 99 235 / var(--tw-bg-opacity, 1));
+}
+
 .active\:bg-gray-100:active {
   --tw-bg-opacity: 1;
   background-color: rgb(243 244 246 / var(--tw-bg-opacity, 1));
+}
+
+.active\:text-white:active {
+  --tw-text-opacity: 1;
+  color: rgb(255 255 255 / var(--tw-text-opacity, 1));
 }
 
 @media (min-width: 340px) {
@@ -1828,6 +1829,10 @@ select {
 
   .lg\:mr-0 {
     margin-right: 0px;
+  }
+
+  .lg\:mt-20 {
+    margin-top: 5rem;
   }
 
   .lg\:flex {

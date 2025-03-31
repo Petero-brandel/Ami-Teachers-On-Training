@@ -35,7 +35,7 @@
         <ul class="-z-50" data-aos="fade-bottom" data-aos-delay="100">
             {% for module in modules  %}
             <li class="bg-gray-200 px-8 py-3 mb-4 focus:text-white">
-                <button class="w-full text-left font-bold pr-2 flex items-center justify-between hover:bg-blue-600 focus:bg-blue-600 active:bg-blue-600 hover:text-white" onclick="toggleDropdown('module-{{ module.id }}', this)">
+                <button class="w-full text-left font-bold pr-2 flex items-center justify-between hover:bg-blue-600 focus:bg-blue-600 focus:text-white active:text-white active:bg-blue-600 hover:text-white" onclick="toggleDropdown('module-{{ module.id }}', this)">
                     <span><i class="text-blue-600 ri-play-fill pr-2"></i>{{module.module_number}}: {{module.module_title}}</span>
                     <i class="ri-arrow-down-s-line"></i>
                 </button>
@@ -45,6 +45,7 @@
                     <li class="py-2 pl-2 w-full hover:bg-blue-600 hover:text-white active:bg-blue-600 active:text-white focus:bg-blue-600 focus:text-white><a href="#">Lesson 3: Q&A</a></li>
                 </ul>
             </li>
+           
             {% endfor %}
 
             <!-- Repeat for other modules -->
