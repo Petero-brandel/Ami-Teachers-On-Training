@@ -1,10 +1,10 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth import authenticate, login, logout
 from django.contrib import messages
 from .forms import CustomSignupForm, LessonForm, ModuleForm
 from django.contrib.auth.models import User
 from django.contrib.auth.decorators import login_required
-from .models import Module
+from .models import Module, Lesson
 
 
 def sign_up(request):
@@ -14,7 +14,7 @@ def sign_up(request):
             user = form.save()
             login(request, user)
             messages.success(request, 'Account created successfully!')
-            return redirect('home') 
+            return redirect('login') 
         else:
             for field, errors in form.errors.items():
                 for error in errors:
@@ -54,8 +54,7 @@ def home(request):
 
 @login_required(login_url='/login')
 def course_page(request):
-    
-    modules = Module.objects.all()
+    modules = Module.objects.prefetch_related('lessons').all()
     
     context = {
         'modules': modules
@@ -81,5 +80,35 @@ def create_module(request):
             
             
     return render(request, 'core/create-module.html', {'form':form})
+
+
+def add_lesson(request):
+    form =  LessonForm()
+    
+    if request.method == 'POST':
+        form =  LessonForm(
+            request.POST, request.FILES
+        )
+        
+        if form.is_valid():
+            form.save()
+            return redirect('course-page')
+        else:
+            form =  LessonForm()
+            
+            
+    return render(request, 'core/addLesson.html', {'form':form})
+
+def lesson_detail(request, pk):
+    lesson = get_object_or_404(Lesson, id=pk)
+    modules = Module.objects.prefetch_related('lessons').all()
+    
+    context = {
+        'lesson': lesson,
+        'modules': modules
+    }
+
+    return render(request, 'core/lesson-details.html', context)
+
 
 

@@ -11,10 +11,9 @@ urlpatterns = [
     path('login/', views.login_view, name='login'),
     path('logout/', views.logout_view, name='logout'), 
     path('create-module/', views.create_module, name='create-module'),
-    
+    path('add-lesson/', views.add_lesson, name='add-lesson'),
+    path('lesson-detail/<int:pk>/', views.lesson_detail, name='lesson-detail'),
 
-]
+] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
-if settings.DEBUG:
-    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 

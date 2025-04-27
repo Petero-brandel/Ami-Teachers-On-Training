@@ -9,37 +9,19 @@
     <form method="post" enctype="multipart/form-data">
         {% csrf_token %}
 
-        <!-- Module Name Field -->
+        <!-- Module title Field -->
         <div class="mb-4">
-            <label for="id_module_name" class="block text-sm font-medium text-gray-700">Module</label>
-            <input
-                type="text"
-                name="module_name"
-                id="id_module_name"
-                class="mt-1 w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
-                placeholder="E.g Module 1"
-                value="{{ form.module_name.value|default_if_none:'' }}"
-            >
-            {% if form.module_name.errors %}
-                <div class="text-red-500 text-sm mt-1">
-                    {{ form.module_name.errors }}
-                </div>
-            {% endif %}
-        </div>
-
-        <!-- Module Description Field -->
-        <div class="mb-4">
-            <label for="id_module_description" class="block text-sm font-medium text-gray-700">Module Description</label>
+            <label for="id_module_title" class="block text-sm font-medium text-gray-700">Module title</label>
             <textarea
-                name="module_description"
-                id="id_module_description"
+                name="module_title"
+                id="id_module_title"
                 class="mt-1 w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
-                placeholder="Enter module description"
+                placeholder="Enter module title"
                 rows="4"
-            >{{ form.module_description.value|default_if_none:'' }}</textarea>
-            {% if form.module_description.errors %}
+            >{{ form.module_title.value|default_if_none:'' }}</textarea>
+            {% if form.module_title.errors %}
                 <div class="text-red-500 text-sm mt-1">
-                    {{ form.module_description.errors }}
+                    {{ form.module_title.errors }}
                 </div>
             {% endif %}
         </div>
@@ -61,9 +43,46 @@
         </div>
 
         <!-- Submit Button -->
-        <button type="submit" class="w-full bg-blue-500 text-white py-2 px-4 rounded-lg hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500">
-            Save Module
+        <button 
+            type="submit" 
+            class="w-full bg-blue-500 text-white py-2 px-4 rounded-lg hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500" 
+            id="submit-button"
+            onclick="handleButtonClick(event, this.form)"
+        >
+            <span id="button-text">Save Module</span>
+            <span id="loading-spinner" class="hidden">
+            <svg class="animate-spin h-5 w-5 text-white inline-block ml-2" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+            <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+            <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8v8H4z"></path>
+            </svg>
+            </span>
         </button>
+
+        <script>
+            function handleButtonClick(event, form) {
+                event.preventDefault(); // Prevent default form submission
+            const button = document.getElementById('submit-button');
+            const buttonText = document.getElementById('button-text');
+            const loadingSpinner = document.getElementById('loading-spinner');
+
+            // Disable the button to prevent multiple submissions
+            button.disabled = true;
+
+            // Show the loading spinner and hide the button text
+            buttonText.classList.add('hidden');
+            loadingSpinner.classList.remove('hidden');
+
+            // Add a timeout to re-enable the button if the process takes too long
+            setTimeout(() => {
+                button.disabled = false;
+                buttonText.classList.remove('hidden');
+            }, 10000); // 10 seconds timeout
+
+                // Submit the form programmatically
+                form.submit();
+            }, 10000); // 10 seconds timeout
+            }
+        </script>
     </form>
 </div>
 {% endblock content %}

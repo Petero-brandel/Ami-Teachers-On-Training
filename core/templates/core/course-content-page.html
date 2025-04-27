@@ -1,5 +1,6 @@
 {% extends "core/base.html" %}
 {% block content %}
+{% load static %}
 
 {% include "core/components/nav.html" %}
 
@@ -23,7 +24,71 @@
 <div class="lg:flex md:flex lg:justify-center md:justify-center sm:block md:mx-8 lg:mx-8">
     <div>
         <div>
-            {% include "core/components/video-plate.html" %}
+            <div class="w-full max-w-4xl mx-auto bg-stone-200 rounded-lg p-4 sm:p-6 mt-4" data-aos="fade-up" data-aos-delay="100">
+                <!-- Button Group -->
+                <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 mx-4">
+                    <div class="flex flex-col sm:flex-row gap-2">
+                        <button class="outline-none font-extrabold  text-black px-4 
+                        py-2 rounded-lg border border-[#d8d8d8] focus:ring-slate-100
+                        focus:bg-blue-700 focus:text-white hover:bg-blue-700 hover:text-white"> 
+                        <i class="ri-folder-video-line"></i></button>
+            
+                        <button class="outline-none font-extralight  text-black px-4 
+                        py-2 rounded-lg border border-[#d8d8d8] focus:ring-slate-100
+                        focus:bg-blue-700 focus:text-white hover:bg-blue-700 hover:text-white"> 
+                        <i class="ri-file-text-line"></i></button>
+                    </div>
+            
+                    <button class="outline-none font-semibold  text-black px-4 
+                        py-2 rounded-lg border border-[#d8d8d8] focus:ring-slate-100
+                        focus:bg-blue-700 focus:text-white hover:bg-blue-700 hover:text-white"> 
+                        <i class="ri-github-fill"></i> Resources</button>
+            
+                    <div class="flex flex-col sm:flex-row gap-2">
+                        <button class="outline-none font-bold text-blue-600 hover:text-blue-400"> 
+                            <i class="ri-customer-service-line"></i></button>
+            
+                        
+                    </div>
+                </div>
+            
+                <!-- Video Section -->
+                <div class="mt-4">
+                    <video class="w-full h-auto p-4 rounded-md size-fit" controls autoplay style="max-width: 100%; max-height: 500px;">
+                        <source src="{% static 'videos/amiteach.mp4' %}" type="video/mp4">
+                        <track src="{% static 'videos/subtitles_en.vtt' %}" kind="subtitles" srclang="en" label="English">
+                        Your browser does not support the video tag.
+                    </video>
+                </div>
+            
+                <!-- Title and Description -->
+                <h1 class="font-extrabold text-lg sm:text-xl font-serif mt-4 mb-4 mx-4">
+                  {% comment %} {% for module in module %}
+                        {{module.module_name}}
+                        {% endfor %} {% endcomment %}
+                    
+                    Intro To Advanced Teaching Techniques 101
+                </h1>
+                <p class="w-full max-w-2xl mx-4 text-sm sm:text-base">
+                    This Chapter covers all the advanced strategies and Tips that help everyone excel as a Teacher in various Fields and Denominations.
+                </p>
+            
+                <!-- Navigation Buttons -->
+                <div class="flex flex-col sm:flex-row justify-between gap-4 mt-4 mx-4">
+                    <div>
+                        <button id="prevButton" class="outline-none font-semibold bg-[#f3f2f2] text-black px-4 
+                        py-2 rounded-lg border border-[#d8d8d8] focus:ring-slate-100
+                        focus:bg-blue-700 focus:text-white hover:bg-blue-700 hover:text-white flex items-center">
+                        <span id="loader" class="loader mr-2 hidden"></span>
+                        <i class="ri-skip-right-fill mr-2"></i> Previous</button>
+                    </div>
+            
+                    <div>
+                        {% include "core/components/buttons/button2.html" %}
+            
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
         
@@ -35,17 +100,26 @@
         <ul class="-z-50" data-aos="fade-bottom" data-aos-delay="100">
             {% for module in modules  %}
             <li class="bg-gray-200 px-8 py-3 mb-4 focus:text-white">
-                <button class="w-full text-left font-bold pr-2 flex items-center justify-between hover:bg-blue-600 focus:bg-blue-600 focus:text-white active:text-white active:bg-blue-600 hover:text-white" onclick="toggleDropdown('module-{{ module.id }}', this)">
-                    <span><i class="text-blue-600 ri-play-fill pr-2"></i>{{module.module_number}}: {{module.module_title}}</span>
+                <button class="w-full text-left font-bold pr-2 flex items-center justify-between overflow-x-hidden hover:bg-blue-600 focus:bg-blue-600 focus:text-white  active:text-white active:bg-blue-600 hover:text-white" onclick="toggleDropdown('module-{{ module.id }}', this)">
+                    <span><i class="text-blue-600 ri-play-fill pr-2"></i>Module {{forloop.counter}}: {{module.module_title}} </span>
                     <i class="ri-arrow-down-s-line"></i>
                 </button>
                 <ul id="module-{{ module.id }}" class="hidden pl-6 mt-4">
-                    <li class="py-2 pl-2 w-full hover:bg-blue-600 hover:text-white active:bg-blue-600 active:text-white focus:bg-blue-600 focus:text-white"><a href="#">Lesson 1: Deep Dive</a></li>
-                    <li class="py-2 pl-2 w-full hover:bg-blue-600 hover:text-white active:bg-blue-600 active:text-white focus:bg-blue-600 focus:text-white><a href="#">Lesson 2: Practical Examples</a></li>
-                    <li class="py-2 pl-2 w-full hover:bg-blue-600 hover:text-white active:bg-blue-600 active:text-white focus:bg-blue-600 focus:text-white><a href="#">Lesson 3: Q&A</a></li>
+                    {% for lesson in module.lessons.all %}
+                    <li class="py-2 pl-2 w-full hover:bg-blue-600 hover:text-white active:bg-blue-600 active:text-white focus:bg-blue-600 focus:text-white"><a href="{% url 'lesson-detail' lesson.pk %}">Lesson {{forloop.counter}}: {{lesson.title}}</a></li>
+                    {% empty %}
+                    <li class="py-2 pl-2 w-full hover:bg-blue-600 hover:text-white active:bg-blue-600 active:text-white focus:bg-blue-600 focus:text-white"><a href="#">No Lesson Available</a></li>
+                    {% endfor %}
+
+                    <button class="mt-5 mb-5">
+                        <a href="{% url 'add-lesson' %}" class="bg-blue-500 text-white px-4 py-2 rounded-sm hover:bg-blue-600">Add Lesson</a>
+                    </button>
+
                 </ul>
             </li>
-           
+
+            {% empty %}
+            <small> No Module Available</small>
             {% endfor %}
 
             <!-- Repeat for other modules -->
@@ -67,5 +141,5 @@
 </div>
 
 {% include "core/components/footer.html" %}
-{% endblock content %}
 
+{% endblock content %}

@@ -1,0 +1,80 @@
+{% extends "core/base.html" %}
+{% block content %}
+
+{% include "core/components/nav.html" %}
+
+<div class="flex justify-between">
+    <div class="">
+        <button class="px-4 mt-12 ml-8 py-1 rounded-lg outline-none text-left text-[10px]">Powered By Ami</button>
+    </div>
+
+    {% if user.is_superuser %}
+        <div>
+            <a class="float-right p-2 text-white mt-9 mr-4
+             bg-blue-700 rounded-xl hover:bg-blue-800" 
+             href="{% url 'create-module' %}"><i class="ri-add-circle-fill"></i> 
+             Add to Course</a>
+        </div>
+    {% endif %}   
+</div>
+
+
+<!-- the video content section -->
+<div class="lg:flex md:flex lg:justify-center md:justify-center sm:block md:mx-8 lg:mx-8">
+    <div>
+        <div>
+            {% include "core/components/video-plate.html" %}
+        </div>
+    </div>
+        
+
+    {% comment %} other courses listdown {% endcomment %}
+
+   
+    <div class="mt-4 mx-4 lg:ml-12 lg:mr-0 md:ml-12 md:mr-0 max-h-[400px] md:max-h-full lg:max-h-[450px] overflow-y-scroll">
+        <ul class="-z-50" data-aos="fade-bottom" data-aos-delay="100">
+            {% for module in modules  %}
+            <li class="bg-gray-200 px-8 py-3 mb-4 focus:text-white">
+                <button class="w-full text-left font-bold pr-2 flex items-center justify-between overflow-x-hidden hover:bg-blue-600 focus:bg-blue-600 focus:text-white  active:text-white active:bg-blue-600 hover:text-white" onclick="toggleDropdown('module-{{ module.id }}', this)">
+                    <span><i class="text-blue-600 ri-play-fill pr-2"></i>Module {{forloop.counter}}: {{module.module_title}} </span>
+                    <i class="ri-arrow-down-s-line"></i>
+                </button>
+                <ul id="module-{{ module.id }}" class="hidden pl-6 mt-4">
+                    {% for lesson in module.lessons.all %}
+                    <li class="py-2 pl-2 w-full hover:bg-blue-600 hover:text-white active:bg-blue-600 active:text-white focus:bg-blue-600 focus:text-white"><a href="{% url 'lesson-detail' lesson.pk %}">Lesson {{forloop.counter}}: {{lesson.title}}</a></li>
+                    {% empty %}
+                    <li class="py-2 pl-2 w-full hover:bg-blue-600 hover:text-white active:bg-blue-600 active:text-white focus:bg-blue-600 focus:text-white"><a href="#">No Lesson Available</a></li>
+                    {% endfor %}
+
+                    <button class="mt-5 mb-5">
+                        <a href="{% url 'add-lesson' %}" class="bg-blue-500 text-white px-4 py-2 rounded-sm hover:bg-blue-600">Add Lesson</a>
+                    </button>
+
+                </ul>
+            </li>
+
+            {% empty %}
+            <small> No Module Available</small>
+            {% endfor %}
+
+            <!-- Repeat for other modules -->
+        </ul>
+    </div>
+
+    <script>
+        function toggleDropdown(moduleId) {
+            const dropdowns = document.querySelectorAll('ul[id^="module"]');
+            dropdowns.forEach(dropdown => {
+                if (dropdown.id === moduleId) {
+                    dropdown.classList.toggle('hidden');
+                } else {
+                    dropdown.classList.add('hidden');
+                }
+            });
+        }
+    </script>
+</div>
+
+{% include "core/components/footer.html" %}
+
+{% endblock content %}

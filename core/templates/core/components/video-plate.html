@@ -1,4 +1,5 @@
 {% extends "core/base.html" %}
+{% load static %}
 {% block content %}
 
 <div class="w-full max-w-4xl mx-auto bg-stone-200 rounded-lg p-4 sm:p-6 mt-4" data-aos="fade-up" data-aos-delay="100">
@@ -31,22 +32,19 @@
 
     <!-- Video Section -->
     <div class="mt-4">
-        <video class="w-full h-auto p-4 rounded-md" controls>
-            <source src="#" type="video/mp4">
+        <video class="w-full h-auto p-4 rounded-md size-fit" controls autoplay style="max-width: 100%; max-height: 500px;">
+            <source src="{{lesson.video.url}}" type="video/mp4">
+            <track src="{% static 'videos/subtitles_en.vtt' %}" kind="subtitles" srclang="en" label="English">
             Your browser does not support the video tag.
         </video>
     </div>
 
     <!-- Title and Description -->
     <h1 class="font-extrabold text-lg sm:text-xl font-serif mt-4 mb-4 mx-4">
-      {% comment %} {% for module in module %}
-            {{module.module_name}}
-            {% endfor %} {% endcomment %}
-        
-        Intro To Advanced Teaching Techniques 101
+     {{lesson.title}}
     </h1>
     <p class="w-full max-w-2xl mx-4 text-sm sm:text-base">
-        This Chapter covers all the advanced strategies and Tips that help everyone excel as a Teacher in various Fields and Denominations.
+       {{lesson.description}}
     </p>
 
     <!-- Navigation Buttons -->
